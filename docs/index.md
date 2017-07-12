@@ -1,17 +1,14 @@
-# Welcome to Intel Aero Documentation
+# Welcome to Intel Aero Platform
 
-For full documentation visit [intel-aero.github.io](http://intel-aero.github.io).
+[//]: # (TODO: Add images for Compute Board and RTF)
 
-## Commands
+Intel Aero is a set of components to help drone developers and integrators
+to have a platform to build upon. It is composed of:
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+  - Ready-To-Fly Kit (RTF)
+  - Intel Aero Compute Board
+  - Vision Accessory Kit
+  - Enclosure Kit
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Here you can find more information about the hardware, software and how
+to use each of these components.

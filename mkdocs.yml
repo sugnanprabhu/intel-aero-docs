@@ -1,1 +1,66 @@
-site_name: Intel Aero Documentation
+site_name: Intel Aero
+site_url: 'https://intel-aero.github.io'
+# this currently add an "edit link" to each page
+#repo_url: 'https://github.com/intel-aero/intel-aero-docs'
+
+# TODO: see http://squidfunk.github.io/mkdocs-material/getting-started/
+# for options to customize the theme like adding a logo, favicon, etc.
+theme: 'material'
+extra:
+  palette:
+    primary: 'blue'
+    accent: 'light blue'
+  feature:
+    tabs: true
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - codehilite(guess_lang=false)
+  - toc(permalink=true)
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.magiclink
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
+  - pymdownx.inlinehilite
+
+pages:
+- Welcome: 'index.md'
+- First Steps:
+  - Setup: 'basic/setup.md'
+  - Update: 'basic/update.md'
+  - Flying: 'basic/flying.md'
+  - Camera: 'basic/camera.md'
+- Development:
+  - Intro: 'dev/dev.md'
+  - Flight Stacks: 'dev/flight-stacks.md'
+  - Container:
+    - Intro: 'dev/container/container.md'
+    - Setup: 'dev/container/setup.md'
+    - Workflow: 'dev/container/workflow.md'
+    - Deploy: 'dev/container/deploy.md'
+  - Companion Applications:
+    - Intro: 'dev/app/app.md'
+    - Pymavlink: 'dev/app/pymavlink.md'
+    - Mavlink: 'dev/app/mavlink.md'
+    - Dronekit: 'dev/app/dronekit.md'
+    - ROS: 'dev/app/ros.md'
+  - Camera: 'dev/camera.md'
+  - Yocto Project:
+    - Intro: 'dev/yocto/yocto.md'
+    - Add a pre-existent package: 'dev/yocto/add-preexistent-package.md'
+    - Package own application: 'dev/yocto/package-own-application.md'
+    - Work with Kernel: 'dev/yocto/work-with-kernel.md'
+  - Collision Avoidance: 'dev/coav.md'
+- Hardware:
+  - Info and Architecture: 'hw/info.md'
+  - Mods: 'hw/mods.md'
+- Software:
+  - Info and Architecture: 'sw/info.md'
+- Contributing:
+  - Documentation: 'contributions/documentation.md'
+  - Applications: 'contributions/app.md'
+  - Yocto Project: 'contributions/yocto.md'
+  - Container Images: 'contributions/container.md'
+- Troubleshooting:
+  - Troubleshooting: 'troubleshooting.md'
