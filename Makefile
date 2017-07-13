@@ -1,5 +1,8 @@
 DEST ?= /tmp/intel-aero-docs
 
+build:
+	mkdocs build
+
 setup:
 	pip install --user --upgrade mkdocs
 	pip install --user --upgrade mkdocs-material
@@ -13,9 +16,6 @@ setup:
 
 serve:
 	mkdocs serve
-
-build:
-	mkdocs build
 
 publish deploy: build
 	rsync -avz --delete site/ $(DEST)
