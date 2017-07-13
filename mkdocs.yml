@@ -12,6 +12,8 @@ extra:
     accent: 'light blue'
   feature:
     tabs: true
+extra_css:
+  - 'css/extra.css'
 
 markdown_extensions:
   - admonition

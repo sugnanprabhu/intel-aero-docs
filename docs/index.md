@@ -1,6 +1,15 @@
 # Welcome to Intel Aero Platform
 
-[//]: # (TODO: Add images for Compute Board and RTF)
+<div class="img-front-page">
+  <div class="img-front-page-container">
+      <img src="img/intel-aero-compute-board.jpg" />
+  </div>
+  <div class="img-front-page-container">
+      <img src="img/intel-aero-rtf.jpg" />
+  </div>
+</div>
+<div style="clear:both"></div>
+
 
 Intel Aero is a set of components to help drone developers and integrators
 to have a platform to build upon. It is composed of:

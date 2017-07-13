@@ -1,0 +1,11 @@
+
+.img-front-page {
+    display: table;
+    width: 100%;
+}
+
+.img-front-page-container {
+    display: table-cell;
+    vertical-align: middle;
+    max-width: 350px
+}
