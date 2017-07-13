@@ -2,10 +2,10 @@
 
 <div class="img-front-page">
   <div class="img-front-page-container">
-      <img src="img/intel-aero-compute-board.jpg" />
+      <img src="img/intel-aero-compute-board.jpg" class="img-front-page" />
   </div>
   <div class="img-front-page-container">
-      <img src="img/intel-aero-rtf.jpg" />
+      <img src="img/intel-aero-rtf.jpg" class="img-front-page" />
   </div>
 </div>
 <div style="clear:both"></div>
