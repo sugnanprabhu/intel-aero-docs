@@ -28,11 +28,11 @@ markdown_extensions:
 
 pages:
 - Welcome: 'index.md'
-- First Steps:
-  - Setup: 'basic/setup.md'
-  - Update: 'basic/update.md'
-  - Flying: 'basic/flying.md'
-  - Camera: 'basic/camera.md'
+- Getting Started:
+  - Setup: 'getting-started/setup.md'
+  - Update: 'getting-started/update.md'
+  - Flying: 'getting-started/flying.md'
+  - Camera: 'getting-started/camera.md'
 - Development:
   - Intro: 'dev/dev.md'
   - Flight Stacks: 'dev/flight-stacks.md'
