@@ -27,8 +27,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
 
 pages:
-- Welcome: 'index.md'
 - Getting Started:
+  - Welcome: 'index.md'
   - Setup: 'getting-started/setup.md'
   - Update: 'getting-started/update.md'
   - Flying: 'getting-started/flying.md'
