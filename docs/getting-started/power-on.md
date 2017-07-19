@@ -38,7 +38,8 @@ they are provided with the connector above.
     LiPo batteries are very dense in energy and can be dangerous is not handled
     properly. If you are not already a RC Hobbyist, then working with a
     professional or joining a RC club may be a good idea.
-    
+
+!!! warning
     In case you plan to take your drone with you on a commercial flight be
     aware that airlines have strict rules regarding the transportation of LiPo
     batteries.
