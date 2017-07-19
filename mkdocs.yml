@@ -1,5 +1,7 @@
 site_name: Intel Aero
 site_url: 'https://intel-aero.github.io'
+site_favicon: favicon.ico
+
 # this currently add an "edit link" to each page
 #repo_url: 'https://github.com/intel-aero/intel-aero-docs'
 
