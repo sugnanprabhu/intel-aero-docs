@@ -43,3 +43,9 @@ they are provided with the connector above.
     In case you plan to take your drone with you on a commercial flight be
     aware that airlines have strict rules regarding the transportation of LiPo
     batteries.
+
+The power button on the power distribution board should be firmly pressed until
+the LEDs next to it are on. This is usually a fraction of a second. If pressed and
+released too early it's normal that it will not work.
+
+![Powering RTF](img/power-on-rtf.png)
