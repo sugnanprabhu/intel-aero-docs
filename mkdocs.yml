@@ -31,7 +31,7 @@ markdown_extensions:
 pages:
 - Getting Started:
   - Welcome: 'index.md'
-  - Setup: 'getting-started/setup.md'
+  - Power On: 'getting-started/power-on.md'
   - Update: 'getting-started/update.md'
   - Flying: 'getting-started/flying.md'
   - Camera: 'getting-started/camera.md'
