@@ -25,10 +25,12 @@ by checking its md5sum. It must match the md5sum published on the Download Cente
 
 ### Linux and macOS
 
-Open a terminal and execute the following command:
+Open a terminal and execute the following command below. The md5sum can be seen
+in the line following it.
 
-``` sh
-md5sum ~/Downloads/intel-aero-image-1.4.iso
+``` console
+$ md5sum ~/Downloads/intel-aero-image-1.4.iso
+9a1706addd08eb8bea3a4e6dbc58b724 /home/<user>/Downloads/intel-aero-image-1.4.iso
 ```
 
 The command above assumes the download has been done to your Downloads directory,
@@ -95,8 +97,8 @@ If you already have an OS image with version 1.2 or greater and connected
 via WiFi, just type the following command. For versions before that, continue
 reading for alternative instructions.
 
-``` sh
-aero-reboot-update.py
+``` console
+# aero-reboot-update.py
 
 ```
 
@@ -104,18 +106,18 @@ This will verify you have a new OS image on the USB drive and reboot in update
 mode. If you are connected via USB you have to bypass the check and after
 seeing the message that the system is rebooting rapidly connect the USB drive:
 
-``` sh
-aero-reboot-update.py -f
+``` console
+# aero-reboot-update.py -f
 ```
 
 Before version 1.2 the command above didn't exist and you will need to manually
 access the command directly from the new OS image. Use the following commands:
 
-``` sh
-mkdir -p /tmp/{iso,newroot}
-mount -o ro /dev/sda1 /tmp/iso
-mount -o loop,ro /tmp/iso/rootfs.img /tmp/newroot
-/tmp/newroot/usr/sbin/aero-reboot-update.py
+``` console
+# mkdir -p /tmp/{iso,newroot}
+# mount -o ro /dev/sda1 /tmp/iso
+# mount -o loop,ro /tmp/iso/rootfs.img /tmp/newroot
+# /tmp/newroot/usr/sbin/aero-reboot-update.py
 ```
 
 ## Flash progress
