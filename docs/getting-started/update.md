@@ -199,3 +199,57 @@ During the next boot the BIOS will detect the update and flash the new version.
 If you have HDMI output connected you can see the update progress. After
 logging in again, check the current version [as above](#check-current-version)
 to make sure everything worked.
+
+## FPGA
+
+The OS image comes with the recommended versions of the FPGA firmware, but during
+the install process it doesn't flash it automatically since the user may choose
+what version to use depending on his needs and also can modify and have his own
+firmware: the [FPGA source](https://github.com/intel-aero/intel-aero-fpga)
+is open source too. Check the available versions of the fpga under `/etc/fpga/`:
+
+- `aero-rtf.jam`: this is for use with RTF kit during normal operation
+- `aero-rtf-recovery.jam`: this is for use with the RTF kit under special
+  circunstances: it allows the Compute Board to instruct the Flight Controller
+  to stop on bootloader so we can flash new versions of the firmware even if
+  the previous version stopped responding due to a bad update
+- `aero-compute-board.jam`: this should be selected if using only the Compute
+  Board and not the Flight Controller. Note that the labels that accompany
+  the Compute Board have no meaning. Check the official documentation for
+  what each pin is connected to.
+
+You can flash the FPGA with the command below in which `<firmware>` is one of
+the firmwares above.
+
+``` console
+# jam -aprogram /etc/fpga/<firmware>.jam
+```
+
+## Flight Controller
+
+This only applies to the RTF kit since the Compute Board doesn't come with
+the flight controller which is called **aerofc**. The RTF kit comes
+pre-flashed and calibrated with PX4, but it's recommended to update to the
+same version that comes in the OS image to get the latest improvements.
+
+The current version of OS image comes with both PX4 and ArduPilot firmwares
+and the user can choose which one he prefers. They are located in `/etc/aerofc/`.
+Commands below illustrate how to flash each of them:
+
+PX4:
+``` console
+# aerofc-update.sh /etc/aerofc/px4/nuttx-aerofc-v1-default.px4
+```
+
+ArduPilot:
+``` console
+# aerofc-update.sh /etc/aerofc/ardupilot/arducopter-aerofc-v1.px4
+```
+
+After this command the flight controller (not the Compute Board) is
+automatically rebooted with the new firmware.
+
+Flight stack developers may want to flash the current version being developed
+rather than the stable version that comes with the OS image. For that it's
+recommended to follow the steps from each of them: [PX4](https://dev.px4.io/en/flight_controller/intel_aero.html)
+and [ArduPilot](http://ardupilot.org/copter/docs/common-intel-aero-rtf.html).
