@@ -4,7 +4,27 @@ The Intel Aero Compute Board and the RTF Kit comes already flashed from factory
 and ready to use. The version may vary and it's recommended for developers to
 update to the last available version.
 
-## Download the latest version
+There are 4 main components that may need to be updated:
+Operating System, BIOS, FPGA, Flight Controller (aerofc).
+
+## Check current version
+
+In order to know what needs to be updated you may check what's already
+currently installed on your board. Connect to the board via WiFi or USB
+and use the following command on the terminal:
+
+``` console
+# aero-get-version.py
+BIOS_VERSION = Aero-01.00.12_Prod
+OS_VERSION = v1.4
+AIRMAP_VERSION = 1.8
+FPGA_VERSION = 0xc0
+```
+
+This should show the 3 important versions: OS, BIOS and FPGA. The flight
+controller currently doesn't report its version this way.
+
+## Download
 
 The last software version can be downloaded from
 [Intel's Download Center](https://downloadcenter.intel.com/download/26932/Intel-Aero-Platform-for-UAVs-Installation-Files).
@@ -14,7 +34,7 @@ from that page.
 !!! Tip
     The Operating system image is updated much more frequently than the BIOS.
     If you already have the last BIOS flashed you don't need to download and
-    flash it again. Check [XXXXXX](#) for instructions on how to check version
+    flash it again. See [Check current version](#check-current-version) for instructions on how to check version
     currently installed.
 
 As of this writting the OS Image is at version 1.4 and the BIOS at version
