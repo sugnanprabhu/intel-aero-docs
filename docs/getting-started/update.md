@@ -175,3 +175,27 @@ The updated process gives feedback to the user in some forms:
     putting it near to the hole to reflect the light and monitor the progress.
 
     ![RGB LED on RTF kit](img/rgb-led-rtf.png)
+
+## BIOS
+
+The BIOS update works by installing the downloaded package `rpm` package. This
+will install the update file that will be used on next boot to update it. You
+need to follow these steps:
+
+1. Copy the file to Aero Compute Board: you may use `scp` or `rsync`. Example:
+
+``` console
+$ scp ~/Downloads/capsule-01.00.12-r0.core2_64.rpm intel-aero.local:
+```
+
+1. Install and reboot
+
+``` console
+# dnf install capsule-01.00.12-r0.core2_64.rpm
+# reboot
+```
+
+During the next boot the BIOS will detect the update and flash the new version.
+If you have HDMI output connected you can see the update progress. After
+logging in again, check the current version [as above](#check-current-version)
+to make sure everything worked.
