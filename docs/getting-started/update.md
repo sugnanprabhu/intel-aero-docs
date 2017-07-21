@@ -96,7 +96,7 @@ your main disk).
 dd if=~/Downloads/intel-aero-image-1.4.iso of=/dev/sdX bs=1M
 ```
 
-### Windows
+### Windows *(alternative)*
 
 If you are using this method, you need to use Win32 Disk Imager
 as detailed in [Check md5sum](#windows) section. After checking the
@@ -105,13 +105,13 @@ download is correct proceed with the following steps:
 - Select your USB drive
 - Click on "Write" button
 
-## Flash OS image to Compute Board
+## Flash OS image
 
 In order to flash a new OS image you can connect to it either via
 WiFi or USB. Since the USB port will be needed to connect the USB drive
 it's recommended to use WiFi though. Follow the instructions on [XXXXX](#) to
 connect establish the network connection and connect via ssh. The commands
-above assume you are already connected to the Compute Board.
+below assume you are already connected to the Compute Board.
 
 If you already have an OS image with version 1.2 or greater and connected
 via WiFi, just type the following command. For versions before that, continue
@@ -140,7 +140,7 @@ access the command directly from the new OS image. Use the following commands:
 # /tmp/newroot/usr/sbin/aero-reboot-update.py
 ```
 
-## Flash progress
+### Status progress
 
 The updated process gives feedback to the user in some forms:
 
