@@ -113,25 +113,37 @@ it's recommended to use WiFi though. Follow the instructions on [XXXXX](#) to
 connect establish the network connection and connect via ssh. The commands
 below assume you are already connected to the Compute Board.
 
-If you already have an OS image with version 1.2 or greater and connected
-via WiFi, just type the following command. For versions before that, continue
-reading for alternative instructions.
+Based on the version you **currently** have installed on the Compute Board the
+method varies since recent versions are always improving the process.
+
+### v1.2 (or greater) via WiFi
+
+Just one command is needed:
 
 ``` console
 # aero-reboot-update.py
 
 ```
-
 This will verify you have a new OS image on the USB drive and reboot in update
-mode. If you are connected via USB you have to bypass the check and after
-seeing the message that the system is rebooting rapidly connect the USB drive:
+mode.
+
+### v1.2 (or greater) via USB
+
+If you are connected via USB you have to bypass the check done by the command
+on the previous section since the USB is being used for usb-ethernet connection:
 
 ``` console
 # aero-reboot-update.py -f
 ```
 
-Before version 1.2 the command above didn't exist and you will need to manually
-access the command directly from the new OS image. Use the following commands:
+After seeing the message that the system is rebooting, rapidly connect the USB
+drive so the system can reboot into it.
+
+### Before v1.2
+
+Before version 1.2 the command `aero-reboot-update.py` used on the previous
+sections didn't exist. You will need to manually access the USB drive to
+execute that command directly from the new OS image.
 
 ``` console
 # mkdir -p /tmp/{iso,newroot}
@@ -139,6 +151,9 @@ access the command directly from the new OS image. Use the following commands:
 # mount -o loop,ro /tmp/iso/rootfs.img /tmp/newroot
 # /tmp/newroot/usr/sbin/aero-reboot-update.py
 ```
+
+Just like on [v1.2 (or greater) via USB](#v12-or-greater-via-usb) you should
+pass the `-f` flag to the last command if you are connected via USB.
 
 ### Status progress
 
