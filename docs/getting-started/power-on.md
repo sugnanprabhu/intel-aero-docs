@@ -27,7 +27,7 @@ battery with the following specification:
 |-------------|--------------------------------------|
 | Connector   | XT60                                 |
 | Cells       | 3S or 4S                             |
-| Capacity    | 4000 mAh (lasts about 24min hovering)|
+| Capacity    | 4000 mAh (lasts about 21min hovering)|
 | Size        | 150 x 50 x 32mm (max)                |
 
 Most LiPo batteries require a LiPo charger-balancer. Some "smart batteries"

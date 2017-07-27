@@ -8,12 +8,14 @@ site_favicon: favicon.ico
 # TODO: see http://squidfunk.github.io/mkdocs-material/getting-started/
 # for options to customize the theme like adding a logo, favicon, etc.
 theme: 'material'
+theme_dir: 'theme'
 extra:
   palette:
     primary: 'blue'
     accent: 'light blue'
   feature:
     tabs: true
+  logo: 'img/logo.png'
 extra_css:
   - 'css/extra.css'
 
