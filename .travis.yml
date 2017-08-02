@@ -1,0 +1,13 @@
+script:
+        - make setup
+        - make build
+
+deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        repo: intel-aero/intel-aero.github.io
+        target_branch: master
+        local_dir: site
+        on:
+                branch: master
