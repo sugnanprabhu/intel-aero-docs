@@ -12,3 +12,12 @@
     display: block;
     margin: 0 auto;
 }
+
+.hw-mod div {
+	display: inline-block;
+	padding: 1em;
+}
+
+.hw-mod img {
+	border: 1px gray solid;
+}
