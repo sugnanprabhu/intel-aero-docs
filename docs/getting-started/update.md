@@ -109,7 +109,7 @@ download is correct proceed with the following steps:
 
 In order to flash a new OS image you can connect to it either via
 WiFi or USB. Since the USB port will be needed to connect the USB drive
-it's recommended to use WiFi though. Follow the instructions on [XXXXX](#) to
+it's recommended to use WiFi though. Follow the instructions on [Connecting](connecting) to
 connect establish the network connection and connect via ssh. The commands
 below assume you are already connected to the Compute Board.
 
