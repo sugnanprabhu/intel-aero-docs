@@ -34,6 +34,7 @@ pages:
 - Getting Started:
   - Welcome: 'index.md'
   - Power On: 'getting-started/power-on.md'
+  - Connecting: 'getting-started/connecting.md'
   - Update: 'getting-started/update.md'
   - Flying: 'getting-started/flying.md'
   - Camera: 'getting-started/camera.md'
