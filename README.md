@@ -1,11 +1,10 @@
 # Intel Aero Documentation
 
 This repository contains the source files for Intel Aero documentation.
-In order to use it you need to have mkdocs and its themes/extensions
+In order to use it you need to have [mkdocs](http://www.mkdocs.org/) and its themes/extensions
 installed.
 
-There's a Makefile that's mostly a wrapper around mkdocs with some
-extra functionality related to this site.
+There's a [Makefile](https://github.com/intel-aero/intel-aero-docs/blob/master/Makefile) in this repository that's mostly a wrapper around mkdocs with some extra functionality related to this site.
 
 ## Setup and build
 
@@ -21,6 +20,15 @@ This will install all required packages with `pip install --user --upgrade`
 
 ## Contributing
 
+### Working locally / offline
+
+```bash
+git clone git@github.com:intel-aero/intel-aero-docs.git
+cd intel-aero-docs
+```
+
+Edit (or include) .md files using the same syntax used by Github wiki (markdown). There [this helpful guide](https://guides.github.com/features/mastering-markdown/) that describes the syntax, with examples.
+
 To change the documentation and visualize what's being changed, start
 mkdocs's webserver:
 
@@ -28,6 +36,23 @@ mkdocs's webserver:
 # this is just a wrapper to "mkdocs serve"
 make serve
 ```
+When it's done, proceed to commit the changes using the regular git flow:
+
+```bash
+# Check changes not commited
+git status
+
+# Add modified files to the next commit
+git add modified_file.md
+
+# Commit
+git commit -m "modified_file: Summary of modifications"
+
+# Push to a branch for review
+git push origin myusername-identifier
+```
+
+Then proceed with the [regular pull request flow in the Github web interface](https://help.github.com/articles/creating-a-pull-request/). This will notify members of the intel-aero organization so the modification can be reviewed and later merged.
 
 ## Deploying
 
