@@ -268,3 +268,45 @@ Flight stack developers may want to flash the current version being developed
 rather than the stable version that comes with the OS image. For that it's
 recommended to follow the steps from each of them: [PX4](https://dev.px4.io/en/flight_controller/intel_aero.html)
 and [ArduPilot](http://ardupilot.org/copter/docs/common-intel-aero-rtf.html).
+
+## Updating packages
+
+The release 1.5 enabled by default the possibility of updates per package, featuring `dnf` as the package management tool.
+
+The main purpose of the official package repository is to make updates of key components available in a faster pace than the OS release cycles. Note that it **does not** intend to be a fully featured repository as the ones offered by standard Linux distributions - at first, it provides the rpms of packages that are in the .iso, but eventually new ones can be included - For suggestions about packages addition/update/modification,  please open an issue at https://github.com/intel-aero/meta-intel-aero/issues .
+
+First step, required only once: retrieve the public
+
+``` console
+# rpm --import https://download.01.org/aero/repo/intel-aero-key.pub
+```
+
+In order to execute a check for updates, run:
+
+``` console
+# dnf update
+```
+
+If there are new versions for packages, dnf will list them and ask for confirmation.
+
+To install a package from the official repository:
+
+``` console
+# dnf install package-name
+```
+
+To remove a package:
+
+``` console
+# dnf remove package-name
+```
+
+`dnf` can also be used to install local, custom rpms, for example:
+
+``` console
+# dnf install --nogpgcheck custom-package.rpm
+```
+
+By default, `dnf` will check package signature (the official repo publishes them signed). The `--nogpgcheck` parameter above tells dnf to not check the signature of the local custom package. It is useful for development, however not recommended for packages from public repositories.
+
+For a comprehensive documentation about all dnf commands, please check the [upstream documentation](http://dnf.readthedocs.io/en/stable/command_ref.html)
