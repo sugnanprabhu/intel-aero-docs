@@ -11,15 +11,20 @@ By default the OS image configure the WiFi interface as an Access Point with ssi
 `Aero-<MAC>`, in which `<MAC>` is the [MAC address](https://en.wikipedia.org/wiki/MAC_address)
 of the interface, varying from device to device. It's configured WPA-PSK security
 and passkey **1234567890**. After connecting to Aero it's advised to
-change the and ssid by using the following commands:
+change the passkey and ssid by using the following commands:
 
 ``` console
 # nmcli c modify hotspot 802-11-wireless-security.psk <new passkey>
 # nmcli c modify hotspot 802-11-wireless.ssid <new ssid>
 ```
+Need to restart NetworkManager with below command to take effect of new SSID 
+
+``` console
+# systemctl restart NetworkManager  
+```
 
 You can also edit the configuration file in
-`/etc/NetworkManager/system-connections/Hostspot`. In case you switched the
+`/etc/NetworkManager/system-connections/hotspot`. In case you switched the
 interface to work in [client mode](#wifi-client) you may get it back in AP mode
 with the following commands:
 
