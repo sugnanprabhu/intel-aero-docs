@@ -15,10 +15,10 @@ and use the following command on the terminal:
 
 ``` console
 # aero-get-version.py
-BIOS_VERSION = Aero-01.00.12_Prod
-OS_VERSION = v1.4
+BIOS_VERSION = Aero-01.00.13
+OS_VERSION = v1.5.1
 AIRMAP_VERSION = 1.8
-FPGA_VERSION = 0xc0
+FPGA_VERSION = 0xc1
 ```
 
 This should show the 3 important versions: OS, BIOS and FPGA. The flight
@@ -28,17 +28,11 @@ controller currently doesn't report its version this way.
 
 The last software version can be downloaded from
 [Intel's Download Center](https://downloadcenter.intel.com/download/26932/Intel-Aero-Platform-for-UAVs-Installation-Files).
-You will need to download the "Operating system image" and the "Capsule/BIOS"
-from that page.
+You will need to download the "Operating system image" from that page.
+BIOS, FPGA and flight stack are already inside that image.
 
-!!! Tip
-    The Operating system image is updated much more frequently than the BIOS.
-    If you already have the last BIOS flashed you don't need to download and
-    flash it again. See [Check current version](#check-current-version) for instructions on how to check version
-    currently installed.
-
-As of this writting the OS Image is at version 1.4 and the BIOS at version
-1.00.12. After downloading it's advised to check if the download was successful
+As of this writting the OS Image is at version 1.5.1 and the BIOS at version
+1.00.13. After downloading it's advised to check if the download was successful
 by checking its md5sum. It must match the md5sum published on the Download Center.
 
 ## Check md5sum
@@ -49,8 +43,8 @@ Open a terminal and execute the following command below. The md5sum can be seen
 in the line following it.
 
 ``` console
-$ md5sum ~/Downloads/intel-aero-image-1.4.iso
-9a1706addd08eb8bea3a4e6dbc58b724 /home/<user>/Downloads/intel-aero-image-1.4.iso
+$ md5sum ~/Downloads/intel-aero-image-1.5.1.iso
+9b99f6d0fdad00b3c9dbfcca8d5627b0 /home/<user>/Downloads/intel-aero-image-1.5.1.iso
 ```
 
 The command above assumes the download has been done to your Downloads directory,
@@ -93,7 +87,7 @@ your USB drive (be careful not to use the wrong drive since it can overwrite
 your main disk).
 
 ``` sh
-dd if=~/Downloads/intel-aero-image-1.4.iso of=/dev/sdX bs=1M
+dd if=~/Downloads/intel-aero-image-1.5.1.iso of=/dev/sdX bs=1M
 ```
 
 ### Windows *(alternative)*
@@ -193,26 +187,43 @@ The updated process gives feedback to the user in some forms:
 
 ## BIOS
 
-The BIOS update works by installing the downloaded package `rpm` package. This
-will install the update file that will be used on next boot to update it. You
-need to follow these steps:
+!!! Tip
+    The Operating system image is updated much more frequently than the BIOS.
+    If you already have the last BIOS flashed you don't need to
+    flash it again. See [Check current version](#check-current-version) for
+    instructions on how to check the version currently installed.
 
-1. Copy the file to Aero Compute Board: you may use `scp` or `rsync`. Example:
+!!! Warning
+    Do not turn off the board while the BIOS update is happening.
+
+Use the following command to update the BIOS:
 
 ``` console
-$ scp ~/Downloads/capsule-01.00.12-r0.core2_64.rpm intel-aero.local:
-```
-
-1. Install and reboot
-
-``` console
-# dnf install capsule-01.00.12-r0.core2_64.rpm
-# reboot
+# aero-bios-update
+Bios update set up to take place on next boot
+It's recommended to have a monitor plugged on hdmi
+to follow update progress.
 ```
 
 During the next boot the BIOS will detect the update and flash the new version.
-If you have HDMI output connected you can see the update progress. After
-logging in again, check the current version [as above](#check-current-version)
+If you have HDMI output connected you can see the update progress and a message
+like this should be displayed:
+
+``` sh
+GoTo FOTA Process Begin.
+Back up BIOS for seamless recovery. File size is: 0x3C9000
+CHTT_X64_RELEASE_RECOVERY.ROM written onto eMMC. Continue to update Firmware.
+Set FOTA Process Step:  21
+Start to update firmware
+Updating firmware… <n%> Completed.
+Flash Update Complete Status Success. Ready to reset…
+Set FOTA Process Step:  FF
+AFU: Delete File CHTT_X64_RELEASE_RECOVERY.ROM on eMMC.
+AFU: Delete File BIOSUpdate.FV on eMMC.
+Finish FOTA Capsule Update Process.
+```
+
+After logging in again, check the current version [as above](#check-current-version)
 to make sure everything worked.
 
 ## FPGA
@@ -266,16 +277,24 @@ automatically rebooted with the new firmware.
 
 Flight stack developers may want to flash the current version being developed
 rather than the stable version that comes with the OS image. For that it's
-recommended to follow the steps from each of them: [PX4](https://dev.px4.io/en/flight_controller/intel_aero.html)
+recommended to follow the steps from each of them:
+[PX4](https://dev.px4.io/en/flight_controller/intel_aero.html)
 and [ArduPilot](http://ardupilot.org/copter/docs/common-intel-aero-rtf.html).
 
 ## Updating packages
 
-The release 1.5 enabled by default the possibility of updates per package, featuring `dnf` as the package management tool.
+The release 1.5 enabled by default the possibility of updates per package,
+featuring `dnf` as the package management tool.
 
-The main purpose of the official package repository is to make updates of key components available in a faster pace than the OS release cycles. Note that it **does not** intend to be a fully featured repository as the ones offered by standard Linux distributions - at first, it provides the rpms of packages that are in the .iso, but eventually new ones can be included - For suggestions about packages addition/update/modification,  please open an issue at https://github.com/intel-aero/meta-intel-aero/issues .
+The main purpose of the official package repository is to make updates of key
+components available in a faster pace than the OS release cycles. Note that it
+**does not** intend to be a fully featured repository as the ones offered by
+standard Linux distributions - at first, it provides the rpms of packages that
+are in the .iso, but eventually new ones can be included - For suggestions
+about packages addition/update/modification,  please open an issue at
+https://github.com/intel-aero/meta-intel-aero/issues .
 
-First step, required only once: retrieve the public
+First step, required only once, retrieve the public key:
 
 ``` console
 # rpm --import https://download.01.org/aero/repo/intel-aero-key.pub
@@ -307,6 +326,10 @@ To remove a package:
 # dnf install --nogpgcheck custom-package.rpm
 ```
 
-By default, `dnf` will check package signature (the official repo publishes them signed). The `--nogpgcheck` parameter above tells dnf to not check the signature of the local custom package. It is useful for development, however not recommended for packages from public repositories.
+By default, `dnf` will check package signature (the official repo publishes
+them signed). The `--nogpgcheck` parameter above tells dnf to not check the
+signature of the local custom package. It is useful for development, however
+not recommended for packages from public repositories.
 
-For a comprehensive documentation about all dnf commands, please check the [upstream documentation](http://dnf.readthedocs.io/en/stable/command_ref.html)
+For a comprehensive documentation about all dnf commands, please check the
+[upstream documentation](http://dnf.readthedocs.io/en/stable/command_ref.html)
