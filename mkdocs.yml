@@ -63,8 +63,8 @@ pages:
   - Info and Architecture: 'hw/info.md'
   - Mods: 'hw/mods.md'
 - Software:
-  - Info and Architecture: 'sw/info.md'
   - Releases: 'sw/release-notes.md'
+  - Info and Architecture: 'sw/info.md'
 - Contributing:
   - Documentation: 'contributions/documentation.md'
   - Applications: 'contributions/app.md'
