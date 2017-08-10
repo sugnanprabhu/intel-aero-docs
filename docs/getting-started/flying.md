@@ -1,92 +1,149 @@
-Intel (R) Aero Platform supports both PX4 and ArduPilot autopilots.
-Aero Flight Controller ships by default with PX4 firmware.
-
-Specific documentation for each of the supported autopilots:
-
-* PX4:
-    * https://docs.px4.io/en/flying/
-
-
-* ArduPilot:
-    * http://ardupilot.org/copter/docs/flying-arducopter.html
-    * http://ardupilot.org/copter/docs/common-intel-aero-rtf.html
+Intel® Aero Platform supports both PX4 and ArduPilot flight stacks, the former
+being the default from factory. Here we give an overview on the steps necessary
+to get it up and flying, but more extensive documentation can be found on their
+documetation: [PX4](https://docs.px4.io/en/flying/) and ArduPilot ([Intel Aero
+RTF](http://ardupilot.org/copter/docs/flying-arducopter.html) and
+[Flying Arducopter](http://ardupilot.org/copter/docs/common-intel-aero-rtf.html)).
 
 
 ## Calibration
 
 !!! warning
-    Calibration must be done when flight controller is changed/updated
+    The sensors used by the Flight Controller to stabilize the drone need to be
+    calibrated before being ready to fly. This is already done on factory for
+    the RTF, but when it is updated a new calibration may be needed and is
+    **strongly advised**.
 
+!!! note
+    The following steps require connection to the RTF drone. If you do not have
+    a connection stabilished yet, please refer to the [Connecting](connecting/)
+    section.
 
-The sensors used by the Flight Controller to stabilize the drone need to be calibrated before being ready to fly. This is already done on factory for the RTF, but when it is updated a new calibration may be needed and is **strongly advised**.
+The recommended Ground Control Station (GCS) is QGroundControl (QGC). If you
+are using ArduPilot, another commonly used GCS is MissionPlanner, however
+this is not being covered here. Refer to [its own
+documentation](http://ardupilot.org/planner/). When connected to the drone
+QGC should automatically connect and fetch the parameters from the flight
+controller.
 
-The recommended Ground Control Station (GCS) is QGroundControl (QGC). If you are using the ArduPilot flight stack another commonly used GCS is MissionPlanner, however this is not being covered here. Refer to [its own documentation](http://ardupilot.org/planner/).
+### Reset to defaults
 
-!!! warning
-    The following steps require connection to the RTF drone. If you do not have a connection stabilished yet, please refer to the [Connecting](connecting/) section.
+Navigate to the Airframe menu and select **Reset** to reset the drone’s
+airframe configuration. Select **Apply and Restart**. This will reboot the
+Flight Controller (but not the Aero board).
 
-Open up QGroundControl and ensure the GPS and Battery are active **colored black** and have basic functionality in the top panel:
-
-![qgc-calibration01](img/calibration_01.png)
-
-Navigate to the Airframe menu and select **Reset** to reset the drone’s airframe configuration. Select **Apply and Restart**.
+<!-- TODO: add figure support to add caption to all the images -->
 
 ![qgc-calibration02](img/calibration_02.png)
+<p style="text-align: center;">Reset to defaults</p>
 
 ![qgc-calibration03](img/calibration_03.png)
+<p style="text-align: center;">Flight Controller is restarted</p>
 
-Wait for the connection to be reestablished. Throughout the calibration process we want to ensure all sensors and needed parts are calibrated. A red dot in a section indicates an area that may need attention and still has steps to complete. In the summary screen it's possible to see specific details about what still needs to be calibrated or configured. Belo we are going through each of them.
+Wait for the connection to be reestablished. Throughout the calibration process
+we want to ensure all sensors and needed parts are calibrated. A red dot in a
+section indicates an area that may need attention and still has steps to
+complete. In the summary screen it's possible to see specific details about
+what still needs to be calibrated or configured. Your goal is to get rid of them
+and turning into green marks.
 
-### Binding the transmitter
+![qgc-calibration01](img/calibration_01.png)
+<p style="text-align: center;">Summary screen</p>
 
-Press the Bind button on the Spektrum Transmitter while turning it on and ensure a series of 3 fast continuous fast beeps are heard.
+Below we are going through each of them. The images below to the PX4
+calibration steps, but the steps for ArduPilot are similar and also detailed.
 
-### RC
+### GPS and Battery
+
+Open up QGroundControl and ensure the GPS and Battery are active **colored
+black** and have basic functionality in the top panel. You should see either the
+battery percentage or the voltage.
+
+### Remote Control (RC)
 
 On QGroundControl, navigate to the Radio menu and select **Calibrate**.
 
-Follow the instructions to calibrate the transmitter, selecting **Next** after each change. The images below refer to the PX4 calibration steps, but similar ones are done for ArduPilot.
+Follow the instructions to calibrate the transmitter, selecting **Next** after
+each change. 
 
 ![qgc-calibration04](img/calibration_04.png)
+<p style="text-align: center;">Radio calibration</p>
 
+!!! Tip
+    When moving the RC sticks if QGC doesn't show any changes in the Radio
+    channels, it's possible your transmitter is not bound to the receiver.
+    Check the troubleshooting section below.
 
-### Sensor calibration
+### Sensors
 
-Navigate to the Sensors menu. Select **Ok** to start the sensor calibration process
+Navigate to the Sensors menu. There's a warning about calibrating over WiFi:
+select **Ok** to continue the sensor calibration process.
 
 ![qgc-calibration05](img/calibration_05.png)
+<p style="text-align: center;">Sensors missing calibration</p>
 
-Select Compass menu and press **Ok** to start the calibration process
+#### Accelerometer
 
-![qgc-calibration06](img/calibration_06.png)
-
-Position then rotate the drone as indicated in each of the 6 figures
-
-![qgc-calibration07](img/calibration_07.png)
-
-On PX4 also calibrate the Gyroscope. Select the Gyroscope menu item and it will start automatically. Wait until it completes
-
-![qgc-calibration08](img/calibration_08.png)
-
-Select Accelerometer menu. Position the drone in each of the positions until each of the 6 are marked as green and **Completed**
+Select the Accelerometer menu. Position the drone in each of the positions
+until all of the 6 are marked as green and *Completed*.
 
 ![qgc-calibration09](img/calibration_09.png)
 
-Select the Level Horizon menu and select **Ok**. The calibration will start and stop automatically
+#### Compass
 
-![qgc-calibration10](img/calibration_10.png)
+Select the Compass menu and press **Ok** to start the calibration process,
+accepting the default orientation (ROTATION_NONE).
 
-Navigate to Flight Modes and check the configuration. By default the following is configured:
+![qgc-calibration06](img/calibration_06.png)
+
+On PX4, position the drone in each of the positions, wait for confirmation from
+QGC that it "locked" on that position and then rotate the drone as indicated in
+each figures.
+
+![qgc-calibration07](img/calibration_07.png)
+
+On ArduPilot the calibration process is a little different: after starting the
+calibration, rotate the RTF randomly until the progress bar completes. At the
+end it shows the calibration quality. Ensure it's marked on the green region,
+otherwise you may need to redo the calibration in a different place away from
+metal objects.
+
+<!-- TODO: add image with compass calibration -->
+
+#### Gyroscope (PX4 only)
+
+Select the Gyroscope menu item and it will start automatically. Wait until
+it completes.
+
+![qgc-calibration08](img/calibration_08.png)
+
+#### Level Horizon (PX4 only)
+
+Select the Level Horizon menu item and select **Ok**. The calibration will
+start and stop automatically.
+
+
+## Flight Modes
+
+Navigate to **Flight Modes** and check the configuration. By default the
+following is configured:
 
 * Flight Mode 1 – Position
 * Flight Mode 4 – Altitude
 * Flight Mode 5 – Stabilized
 
-You may want to change the modes as you experiment them. Make sure to read the documentation about each of them on the respective flight stack: using a wrong mode or one that you don't know how it works is very dangerous.
-
 ![qgc-calibration11](img/calibration_11.png)
 
-When this procedure is finished, you should be able to get data in QGC from the drone (ex: GPS coordinates) but also act on the drone (ex: ARM motors, without propellers first).
+!!! Note
+    You may want to change the modes as you experiment with your RTF. Make sure
+    to read the documentation about each of them on the respective flight
+    stack: using a wrong mode or one that you don't know how it works is very
+    dangerous.
+
+When this procedure is finished, you should be able to get data in QGC from the
+drone (ex: GPS coordinates) and also take actions like arming the motors. Make
+sure to test it without propellers first.
+
 
 ## First flight
 
@@ -183,34 +240,59 @@ propellers.
 
 ## Troubleshooting
 
-These troubleshooting tips are for basic usage. For additional troubleshooting tips, please visit the Intel Aero Platform Community Support Forum [communities.intel.com/community/tech/intel-aero](https://communities.intel.com/community/tech/intel-aero)
+These troubleshooting tips are for basic usage. For additional troubleshooting
+tips, please visit the
+[Intel Aero Platform Community Support Forum](https://communities.intel.com/community/tech/intel-aero)
 
 
-### _The GPS antenna mast cannot be raised 90o (vertical):_
+**The GPS antenna mast cannot be raised 90° (vertical):**
 
-     The antenna hinge may be stiff. Be gentle and apply steady pressure to lift the antenna mast. Be sure to slide the antenna base cover away from the base when attempting to raise the antenna mast so that it does not interfere with the hinge.
+The antenna hinge may be stiff. Be gentle and apply steady pressure to
+lift the antenna mast. Be sure to slide the antenna base cover away from
+the base when attempting to raise the antenna mast so that it does not
+interfere with the hinge.
 
-### _The orange LED on the remote control receiver is blinking:_
+**The orange LED on the remote control receiver is blinking:**
 
-This indicates the remote control transmitter and receiver are not properly bound (paired) or that at any moment after turining the receiver on it lost connection to the trasmitter. This can happen if the receiver is turned on before the transmitter or if they are in fact not bound. To bind the transmitter and receiver, turn ON the transmitter while holding down the black panic/bind/trainer button that is immediately adjacent to the Flight Mode toggle switch on the top-left of the transmitter (see Figure 4). If the binding process is successful, the receiver’s orange LED will have a steady orange glow. The binding may fail if there are other nearby transmitters of the same mode. This binding will be remembered in the future as long as the transmitter is always turned on before the drone is turned on. To avoid having to bind it again when you the RTF was turned on before the transmitter, you can just turn everything off and on again on the correct order. More information on the binding process can be found in the user guide for the [Spektrum SPM4648 DXMX receiver, found online](https://www.spektrumrc.com/ProdInfo/Files/SPM4648-Manual-EN.pdf)
+This indicates the remote control transmitter and receiver are not properly
+bound (paired) or that at any moment after turining the receiver on it lost
+connection to the trasmitter.
 
-### _The orange LED on the remote control receiver is ON and steady, but the transmitter does not appear to control the receiver:_
+This can happen if the receiver is turned on
+before the transmitter or if they are in fact not bound. To bind the
+transmitter and receiver, turn ON the transmitter while holding down the black
+panic/bind/trainer button that is immediately adjacent to the Flight Mode
+toggle switch on the top-left of the transmitter (see Figure above).
 
-It is possible the receiver is bound to a different transmitter. Follow the instructions for binding (pairing) the transmitter and receiver. Please refer to the troubleshooting tip above.
+If the binding process is successful, the receiver’s orange LED will have a
+steady orange glow. The binding may fail if there are other nearby transmitters
+of the same mode. This binding will be remembered in the future **as long as
+the transmitter is turned on before the drone**. To avoid having to bind it
+again when the RTF has been turned on before the transmitter, you can just turn
+everything off and on again on the correct order.
 
-### _The motors do not arm:_
+More information on the binding process can be found in the user guide for the
+[Spektrum SPM4648 DXMX receiver](https://www.spektrumrc.com/ProdInfo/Files/SPM4648-Manual-EN.pdf)
 
-Check if the remote control transmitter and receiver are properly bound (paired). If not, please refer to troubleshooting tip above.
+**The orange LED on the remote control receiver is ON and steady, but the
+transmitter does not appear to control the receiver:**
 
-### _The motors arm but the gimbal stick does not control motor throttle:_
+It is possible the receiver is bound to a different transmitter. Follow the
+instructions for binding (pairing) the transmitter and receiver. Please refer
+to the troubleshooting tip above.
 
-Check if the “Throttle Enable” toggle switch on the remote control transmitter is in the “Arm” position. If it is in the “Disarm” position, throttling will have no effect.
+**The motors do not arm:**
 
-### _Pressing and holding the drone’s power button for 3 seconds does not shutdown the drone:_
+Check if the remote control transmitter and receiver are properly bound
+(paired). If not, please refer to troubleshooting tip above.
+
+**The motors arm but the gimbal stick does not control motor throttle:**
+
+Check if the “Throttle Enable” toggle switch on the remote control transmitter
+is in the “Arm” position. If it is in the “Disarm” position, throttling will
+have no effect.
+
+**Pressing and holding the drone’s power button for 3 seconds does not shutdown
+the drone:**
 
 Disconnect the battery. Wait at least 30 seconds. Then reconnect the battery.
-
-## Common mistakes:
-
-* Turning on RC after the drone
-* how to rebind... http://ardupilot.org/copter/docs/common-intel-aero-rtf.html#connecting-the-transmitter
