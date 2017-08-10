@@ -38,6 +38,7 @@ pages:
   - Update: 'getting-started/update.md'
   - Flying: 'getting-started/flying.md'
   - Camera: 'getting-started/camera.md'
+  - Flight Logs: 'getting-started/fclogs.md'
 - Development:
   - Intro: 'dev/dev.md'
   - Flight Stacks: 'dev/flight-stacks.md'
