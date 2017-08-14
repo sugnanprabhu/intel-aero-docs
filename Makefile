@@ -8,6 +8,7 @@ setup:
 	pip install --user --upgrade mkdocs-material
 	pip install --user --upgrade pygments
 	pip install --user --upgrade pymdown-extensions
+	pip install --user git+https://github.com/intel-aero/figureAltCaption.git
 	@echo -e "\n\n###########################################################"
 	@echo Configuration done
 	@echo

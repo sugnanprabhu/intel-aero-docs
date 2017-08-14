@@ -21,3 +21,7 @@
 .hw-mod img {
 	border: 1px gray solid;
 }
+
+figcaption {
+    text-align: center;
+}
