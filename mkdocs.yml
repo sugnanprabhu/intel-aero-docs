@@ -60,6 +60,7 @@ pages:
     - Package own application: 'dev/yocto/package-own-application.md'
     - Work with Kernel: 'dev/yocto/work-with-kernel.md'
   - Collision Avoidance: 'dev/coav.md'
+  - FPGA: 'dev/fpga.md'
 - Hardware:
   - Info and Architecture: 'hw/info.md'
   - Mods: 'hw/mods.md'
