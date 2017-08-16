@@ -34,11 +34,9 @@ Flight Controller (but not the Aero board).
 
 <!-- TODO: add figure support to add caption to all the images -->
 
-![qgc-calibration02](img/calibration_02.png)
-<p style="text-align: center;">Reset to defaults</p>
+![Reset to defaults](img/calibration_02.png)
 
-![qgc-calibration03](img/calibration_03.png)
-<p style="text-align: center;">Flight Controller is restarted</p>
+![Flight Controller is restarted](img/calibration_03.png)
 
 Wait for the connection to be reestablished. Throughout the calibration process
 we want to ensure all sensors and needed parts are calibrated. A red dot in a
@@ -47,8 +45,7 @@ complete. In the summary screen it's possible to see specific details about
 what still needs to be calibrated or configured. Your goal is to get rid of them
 and turning into green marks.
 
-![qgc-calibration01](img/calibration_01.png)
-<p style="text-align: center;">Summary screen</p>
+![Summary screen](img/calibration_01.png)
 
 Below we are going through each of them. The images below to the PX4
 calibration steps, but the steps for ArduPilot are similar and also detailed.
@@ -66,8 +63,7 @@ On QGroundControl, navigate to the Radio menu and select **Calibrate**.
 Follow the instructions to calibrate the transmitter, selecting **Next** after
 each change. 
 
-![qgc-calibration04](img/calibration_04.png)
-<p style="text-align: center;">Radio calibration</p>
+![Radio calibration](img/calibration_04.png)
 
 !!! Tip
     When moving the RC sticks if QGC doesn't show any changes in the Radio
@@ -79,28 +75,27 @@ each change.
 Navigate to the Sensors menu. There's a warning about calibrating over WiFi:
 select **Ok** to continue the sensor calibration process.
 
-![qgc-calibration05](img/calibration_05.png)
-<p style="text-align: center;">Sensors missing calibration</p>
+![Sensors missing calibration](img/calibration_05.png)
 
 #### Accelerometer
 
 Select the Accelerometer menu. Position the drone in each of the positions
 until all of the 6 are marked as green and *Completed*.
 
-![qgc-calibration09](img/calibration_09.png)
+![](img/calibration_09.png)
 
 #### Compass
 
 Select the Compass menu and press **Ok** to start the calibration process,
 accepting the default orientation (ROTATION_NONE).
 
-![qgc-calibration06](img/calibration_06.png)
+![](img/calibration_06.png)
 
 On PX4, position the drone in each of the positions, wait for confirmation from
 QGC that it "locked" on that position and then rotate the drone as indicated in
 each figures.
 
-![qgc-calibration07](img/calibration_07.png)
+![](img/calibration_07.png)
 
 On ArduPilot the calibration process is a little different: after starting the
 calibration, rotate the RTF randomly until the progress bar completes. At the
@@ -115,7 +110,7 @@ metal objects.
 Select the Gyroscope menu item and it will start automatically. Wait until
 it completes.
 
-![qgc-calibration08](img/calibration_08.png)
+![](img/calibration_08.png)
 
 #### Level Horizon (PX4 only)
 
@@ -132,7 +127,7 @@ following is configured:
 * Flight Mode 4 – Altitude
 * Flight Mode 5 – Stabilized
 
-![qgc-calibration11](img/calibration_11.png)
+![](img/calibration_11.png)
 
 !!! Note
     You may want to change the modes as you experiment with your RTF. Make sure
@@ -158,25 +153,25 @@ rear of the drone as shown in Figure 1.
 airframe as possible.
         3. Connect the battery cable to the drone using the XT60 connector
 
-        ![Figure 1](img/guide_1.png)
+        ![](img/guide_1.png)
 
     2. Set up the GPS Antenna (see Figure 2) : Raise the GPS antenna mast 90o until vertical then tighten the antenna base cover
 
-      ![Figure 2](img/guide_2.png)
+      ![](img/guide_2.png)
 
     3. Attach the propellers (see Figure 3)
         1. Identify propellers marked as “A” and “B” on top of the propeller blade.
         2. Attach each propeller to its corresponding labeled motor by pressing down and twisting __counter-clockwise__ (for “A” propellers) and __clockwise__ (for “B” propellers) until each propeller latches securely.
         3. To detach the propeller, press the center hub of the propeller while twisting the propeller blade in the opposite direction used when attaching.
 
-         ![Figure 3](img/guide_3.png)
+         ![](img/guide_3.png)
 
     4. Prepare the remote control transmitter (see Figure 4)
         1. Install the 4 AA alkaline batteries in the transmitter.
         2. Flip all toggle switches UP or AWAY from the pilot. The Flight Mode switch should be set to __Stabilized__ (mode 0) until you arm the motors in Step 3.iv.
         3. Turn ON the transmitter by sliding its power switch UP (located between the two gimbal sticks) The transmitter’s power LED will turn to steady orange and a two-tone “rising chirp” will be heard.
 
-         ![Figure 4](img/guide_4.png)
+         ![](img/guide_4.png)
 
     5. Turn the drone on
 
@@ -197,11 +192,11 @@ propellers.
 
        After turning ON the drone, wait at least 30 seconds before attempting to turn OFF the drone. This includes turning OFF the drone either by pressing the power button or by disconnecting the battery. By waiting for at least 30 seconds, the system should have enough time to load all software components, reducing the risks associated with an unexpected shutdown.
 
-       ![Figure 5](img/guide_5.png)
+       ![](img/guide_5.png)
 
     3. Verify the remote control transmitter is paired to the drone: Verify the orange LED on the remote control receiver located on the bottom side of the drone (Figure 6) is illuminated and steady orange. _If the LED is blinking or not ON, please check the troubleshooting tips._
 
-      ![Figure 6](img/guide_6.png)
+      ![](img/guide_6.png)
 
     4. Arming and Disarming the Motors
      The following instructions assume default factory settings. If you modify the Flight Mode configurations, these instructions may not apply.
@@ -211,7 +206,7 @@ propellers.
 
          Note: When flying indoors, or areas where there is a weak GPS signal, use Stabilized flight mode (mode 0).
 
-         ![Figure 7](img/guide_7.png)
+         ![](img/guide_7.png)
 
         2. To disarm the motors, press the left gimbal stick toward the bottom left. Hold for about 2 seconds. (Figure 7) The motors will stop spinning.
 
